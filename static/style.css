@@ -1,0 +1,68 @@
+:root {
+    --purple: #8C52FF;
+    --pink: #FF66C4;
+    --black: #272727;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    padding-bottom: 4rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+}
+
+header {
+    position: sticky;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.non-copy {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+a, a:hover {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.hidden-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hidden-description:hover {
+    overflow: scroll;
+}
+
+.hyphen {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}

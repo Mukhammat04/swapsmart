@@ -1,0 +1,63 @@
+{% load static %}
+
+<header class="py-3 navbar navbar-expand-md sticky-top border-bottom">
+    <div class="container">
+        <a href="/" class="d-flex text-dark text-decoration-none">
+            <img src="{% static 'logo.svg' %}" alt="logo" height="50">
+        </a>
+        <button data-bs-toggle="collapse" class="navbar-toggler rounded-5" data-bs-target="#navcol-1"
+                aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navcol-1" class="collapse navbar-collapse non-copy">
+            <div class="mx-auto"></div>
+            <div class="d-flex justify-content-center">
+                <ul class="navbar-nav text-center">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item py-1 px-2">
+                            <a href="{% url 'new_vacancy' %}" class="nav-link fw-semibold">
+                                <i class="bi bi-plus-lg"></i> Messages
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a href="{% url 'applications' %}" class="nav-link fw-semibold position-relative">
+                                <i class="bi bi-love"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a class="nav-link fw-semibold" href="{% url 'profile' %}">
+                                <i class="bi bi-person"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a class="nav-link fw-semibold" href="{% url 'logout' %}">
+                                <i class="bi bi-box-arrow-right"></i> Place an ad
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item py-1 px-2">
+                            <a href="{% url 'index' %}" class="nav-link fw-semibold">
+                                <i class="bi bi-chat"></i> Messages
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a href="{% url 'index' %}" class="nav-link fw-semibold position-relative">
+                                <i class="bi bi-heart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a class="nav-link fw-semibold" href="{% url 'login' %}">
+                                <i class="bi bi-person"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item py-1 px-2">
+                            <a class="btn btn-outline-primary fw-semibold" href="{% url 'login' %}">
+                                Place an ad
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

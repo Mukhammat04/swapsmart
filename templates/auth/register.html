@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <h2 class="fw-semibold text-center py-5">Register</h2>
+
+    <div class="container d-flex justify-content-center">
+        <form method="post" class="col-md-4">
+            {% csrf_token %}
+            <div class="form-group pt-2">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group pt-2">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-group pt-2">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            {% if form.username.errors %}
+                <div class="text-danger pt-2" role="alert">
+                    {% for errors in form.username.errors %}
+                        • {{ errors }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="form-group pt-2">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group pt-2">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            {% if form.password1.errors %}
+                <div class="text-danger pt-2" role="alert">
+                    {% for errors in form.password1.errors %}
+                        • {{ errors }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="form-group pt-2">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            {% if form.password2.errors %}
+                <div class="text-danger pt-2" role="alert">
+                    {% for errors in form.password2.errors %}
+                        • {{ errors }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-outline-success offset-3 w-50 mt-3">Register</button>
+        </form>
+    </div>
+{% endblock %}

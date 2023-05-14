@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Oops
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container my-5 col-md-4">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error</h4>
+                <p>{{ error_message }}</p>
+                <hr>
+                <p class="mb-0">Please go back and try again.</p>
+            </div>
+        </div>
+    </section>
+    {% if last_viewed %}
+        <section>
+            <div class="container py-5 pt-0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="fw-semibold text-center py-5">Last viewed activities</h2>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-start">
+                    {% for item in last_viewed %}
+                        <div class="col mb-4">
+                            <div class="d-flex flex-column align-items-center align-items-sm-start">
+                                <a href="{% url 'activity_detail' category_name=item.activity.category.name activity_name=item.activity.name %}">
+                                    <div class="card">
+                                        <img class="card-img-top" style="height: 250px; object-fit: cover"
+                                             src="{{ item.activity.image.url }}" alt="{{ item.activity.title }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold hidden-description"
+                                                style="-webkit-line-clamp: 1;">
+                                                {{ item.activity.name }}
+                                            </h5>
+                                            <p class="card-subtitle">
+                                                    <span class="align-middle badge bg-info text-uppercase mb-2">
+                                                        {{ item.activity.category.name }}
+                                                    </span>
+                                                <span class="align-middle badge bg-secondary text-uppercase mb-2">
+                                                        {{ item.activity.city }}
+                                                    </span>
+                                            </p>
+                                            <p class="card-text hidden-description hyphen">
+                                                {{ item.activity.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
+
